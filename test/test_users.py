@@ -55,3 +55,10 @@ def test_user_email_parametrize(user_id, expected_email):
 def test_get_all_users_status_code():
     response = get_all_users()
     assert response.status_code == 200
+
+def test_get_all_users_not_empty():
+    response = get_all_users()
+    data = response.json()
+
+    assert response.status_code == 200
+    assert len(data) > 0
