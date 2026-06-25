@@ -1,6 +1,6 @@
 import pytest
 
-from api_client import get_post, create_post, update_post, patch_post, delete_post
+from api_client import get_post, create_post, update_post, patch_post, delete_post, get_all_posts
 
 
 def test_post_title(post_data):
@@ -83,3 +83,38 @@ def test_delete_post():
     response = delete_post(1)
 
     assert response.status_code == 200
+
+def test_get_all_posts_status_code():
+    response = get_all_posts()
+    assert response.status_code == 200
+
+def test_get_all_posts_not_empty():
+    response = get_all_posts()
+    data = response.json()
+
+    assert response.status_code == 200
+    assert isinstance(data, list)
+    assert len(data) > 0
+
+def test_get_all_posts_first_item_has_keys():
+    response = get_all_posts()
+    data = response.json()
+    first_post = data[0]
+
+    assert response.status_code == 200
+    assert "id" in first_post
+    assert "title" in first_post
+    assert "body" in first_post
+    assert "userId" in first_post
+
+def test_get_all_posts_all_items_have_keys():
+    response = get_all_posts()
+    data = response.json()
+
+    assert response.status_code == 200
+
+    for post in data:
+        assert "id" in post
+        assert "title" in post
+        assert "body" in post
+        assert "userId" in post

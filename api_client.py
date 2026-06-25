@@ -18,3 +18,6 @@ def patch_post(post_id, payload):
 
 def delete_post(post_id):
     return requests.delete(f"{BASE_URL}{POSTS_ENDPOINT}/{post_id}")
+
+def get_all_posts():
+    return requests.get(f"{BASE_URL}{POSTS_ENDPOINT}")
