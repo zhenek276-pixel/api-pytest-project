@@ -1,6 +1,6 @@
 import pytest
 
-from api_client import get_user
+from api_client import get_user, get_all_users
 
 def test_user_name(user_data):
     assert user_data["username"] == "Bret"
@@ -51,3 +51,7 @@ def test_user_email_parametrize(user_id, expected_email):
 
     assert response.status_code == 200
     assert data["email"] == expected_email
+
+def test_get_all_users_status_code():
+    response = get_all_users()
+    assert response.status_code == 200

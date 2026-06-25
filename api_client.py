@@ -21,3 +21,6 @@ def delete_post(post_id):
 
 def get_all_posts():
     return requests.get(f"{BASE_URL}{POSTS_ENDPOINT}")
+
+def get_all_users():
+    return requests.get(f"{BASE_URL}{USERS_ENDPOINT}")
