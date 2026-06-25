@@ -62,3 +62,53 @@ def test_get_all_users_not_empty():
 
     assert response.status_code == 200
     assert len(data) > 0
+
+def test_get_all_users_first_item_has_keys():
+    response = get_all_users()
+    data = response.json()
+
+    assert response.status_code == 200
+
+    first_user = data[0]
+
+    assert "id" in first_user
+    assert "name" in first_user
+    assert "username" in first_user
+    assert "email" in first_user
+    assert "address" in first_user
+
+def test_get_all_users_all_items_have_keys():
+    response = get_all_users()
+    data = response.json()
+    assert response.status_code == 200
+    for user in data:
+        assert "id" in user
+        assert "name" in user
+        assert "username" in user
+        assert "email" in user
+        assert "address" in user
+
+def test_get_all_users_address_has_keys():
+    response = get_all_users()
+    data = response.json()
+    assert response.status_code == 200
+    for user in data:
+        address = user["address"]
+        assert "street" in address
+        assert "suite" in address
+        assert "city" in address
+        assert "zipcode" in address
+        assert "geo" in address         
+
+def test_get_all_users_geo_has_keys():
+    response = get_all_users()
+    data = response.json()
+
+    assert response.status_code == 200
+
+    for user in data:
+        address = user["address"]
+        geo = address["geo"]
+
+        assert "lat" in geo
+        assert "lng" in geo
