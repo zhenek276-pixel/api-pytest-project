@@ -112,3 +112,51 @@ def test_get_all_users_geo_has_keys():
 
         assert "lat" in geo
         assert "lng" in geo
+
+def test_get_all_users_email_contains_at():
+    response = get_all_users()
+    data = response.json()
+    assert response.status_code == 200    
+    for user in data:
+        email = user["email"]
+        assert "@" in email
+    
+def test_get_all_users_username_not_empty():
+    response = get_all_users()
+    data = response.json()
+    assert response.status_code == 200
+    for user in data:
+        username = user["username"]
+        assert len(username) > 0
+
+def test_get_all_users_id_is_integer():
+    response = get_all_users()
+    data = response.json()
+
+    assert response.status_code == 200
+
+    for user in data:
+        user_id = user["id"]
+        assert isinstance(user_id, int)
+        
+def test_get_all_users_company_has_keys():
+    response = get_all_users()
+    data = response.json()
+
+    assert response.status_code == 200
+
+    for user in data:
+        company = user["company"]
+
+        assert "name" in company
+        assert "catchPhrase" in company
+        assert "bs" in company
+
+def test_get_all_users_company_name_not_empty():
+    response = get_all_users()
+    data = response.json()
+    assert response.status_code == 200
+    for user in data:
+        company = user["company"]
+        name = company["name"]
+        assert len(name) > 0 
