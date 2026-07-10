@@ -196,5 +196,9 @@ docker run --rm api-pytest-project
 
 ```
 
+## CI
+
+Tests are automatically run with Jenkins.
+
 
 
