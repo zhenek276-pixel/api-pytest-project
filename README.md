@@ -201,4 +201,7 @@ docker run --rm api-pytest-project
 Tests are automatically run with Jenkins.
 
 
+## Pipeline
+
+Pipeline настроен с SCM polling trigger.
 
