@@ -205,3 +205,4 @@ Tests are automatically run with Jenkins.
 
 Pipeline настроен с SCM polling trigger.
 
+## Верификация 
