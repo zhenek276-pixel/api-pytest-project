@@ -52,6 +52,7 @@ def test_user_email_parametrize(user_id, expected_email):
     assert response.status_code == 200
     assert data["email"] == expected_email
 
+@pytest.mark.qase_id(1)
 def test_get_all_users_status_code():
     response = get_all_users()
     assert response.status_code == 200

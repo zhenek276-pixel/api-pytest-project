@@ -14,4 +14,4 @@ run_tests:
 
   script:
     - source .venv/bin/activate
-    - pytest -v
+    - pytest -v --qase-mode=testops
