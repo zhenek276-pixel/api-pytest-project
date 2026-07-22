@@ -2,6 +2,7 @@ import pytest
 pytestmark = [
     pytest.mark.api,
     pytest.mark.posts
+    
 ]
 
 from api_client import get_post, create_post, update_post, patch_post, delete_post, get_all_posts
@@ -19,6 +20,7 @@ def test_post_user_id_from_fixture(post_data):
     assert post_data["userId"] == 1
 
 @pytest.mark.qase_id(5)
+@pytest.mark.smoke
 def test_post_status_code():
     response = get_post(1)
 
@@ -95,6 +97,7 @@ def test_delete_post():
     assert response.status_code == 200
 
 @pytest.mark.qase_id(10)
+@pytest.mark.smoke
 def test_get_all_posts_status_code():
     response = get_all_posts()
     assert response.status_code == 200

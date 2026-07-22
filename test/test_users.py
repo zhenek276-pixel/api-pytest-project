@@ -2,6 +2,7 @@ import pytest
 pytestmark = [
     pytest.mark.api,
     pytest.mark.users
+    
 ]
 
 from api_client import get_user, get_all_users
@@ -18,6 +19,7 @@ def test_user_email_from_fixture(user_data):
     assert user_data["email"] == "Sincere@april.biz"
 
 @pytest.mark.qase_id(16)
+@pytest.mark.smoke
 def test_user_id(user_data):
     assert user_data["id"] == 1
 
@@ -66,6 +68,7 @@ def test_user_email_parametrize(user_id, expected_email):
     assert data["email"] == expected_email
 
 @pytest.mark.qase_id(20)
+@pytest.mark.smoke
 def test_get_all_users_status_code():
     response = get_all_users()
     assert response.status_code == 200

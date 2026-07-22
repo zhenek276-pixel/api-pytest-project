@@ -27,4 +27,4 @@ run_tests:
     - export https_proxy=$HTTPS_PROXY
     - export NO_PROXY=jsonplaceholder.typicode.com
     - export no_proxy=jsonplaceholder.typicode.com
-    - pytest -v -m api --qase-mode=testops
+    - pytest -v --qase-mode=testops
