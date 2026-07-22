@@ -1,5 +1,12 @@
+workflow:
+  name: "API Tests Pipeline"
+
 stages:
   - test
+
+cache:
+  paths:
+    - .cache/pip
 
 run_tests:
   stage: test
@@ -10,7 +17,7 @@ run_tests:
     - python3 -m venv .venv
     - source .venv/bin/activate
     - python -m pip install --upgrade pip
-    - pip install -r requirements.txt
+    - pip install --cache-dir .cache/pip -r requirements.txt
 
   script:
     - source .venv/bin/activate
