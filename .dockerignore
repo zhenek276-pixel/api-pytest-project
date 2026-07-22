@@ -1,4 +1,6 @@
-__pycache__/
+.git
+.gitlab
+.venv
+__pycache__
+.pytest_cache
 *.pyc
-.pytest_cache/
-.git/

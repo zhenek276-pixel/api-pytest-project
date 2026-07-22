@@ -1,4 +1,6 @@
+![pipeline status](https://gitlab.com/zhenek276/api-pytest-project/badges/main/pipeline.svg)
 # API Test Automation Framework
+
 
 Автоматизированное тестирование REST API на Python с использованием Pytest.
 
@@ -80,7 +82,20 @@ api-pytest-project/
 └── .gitlab-ci.yml
 
 
+
+
+
 ---
+## CI/CD
+
+Pipeline runs automatically on GitLab after push.
+
+Features:
+- GitLab Runner (Shell executor)
+- pytest execution
+- Qase TestOps reporting
+- Protected CI/CD variables
+- Proxy configuration for restricted services
 
 # Project Components
 
