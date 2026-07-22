@@ -169,6 +169,19 @@ Pytest
     ↓
 Qase TestOps Report
 
+## CI/CD
+
+Pipeline contains:
+
+- Smoke tests
+- Regression tests
+
+Smoke:
+pytest -m smoke
+
+Regression:
+pytest
+
 Pipeline выполняет:
 
 Создание виртуального окружения
