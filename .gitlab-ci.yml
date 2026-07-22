@@ -1,8 +1,8 @@
 workflow:
   name: "API Tests Pipeline"
 
-stages:
-  - test
+smoke_tests:
+  stage: smoke
 
 cache:
   paths:
@@ -10,6 +10,29 @@ cache:
 
 run_tests:
   stage: test
+  tags:
+    - shell
+
+  before_script:
+    - python3 -m venv .venv
+    - source .venv/bin/activate
+    - python -m pip install --upgrade pip
+    - pip install --cache-dir .cache/pip -r requirements.txt
+
+  script:
+    - source .venv/bin/activate
+    - export HTTP_PROXY=http://172.28.64.1:10809
+    - export HTTPS_PROXY=http://172.28.64.1:10809
+    - export http_proxy=$HTTP_PROXY
+    - export https_proxy=$HTTPS_PROXY
+    - export NO_PROXY=jsonplaceholder.typicode.com
+    - export no_proxy=jsonplaceholder.typicode.com
+    - pytest -v -m smoke --qase-mode=testops
+
+    
+
+    regression_tests:
+  stage: regression
   tags:
     - shell
 
