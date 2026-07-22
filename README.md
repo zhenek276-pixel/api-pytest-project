@@ -1,210 +1,180 @@
-\# API Pytest Project
+# API Test Automation Framework
+
+Автоматизированное тестирование REST API на Python с использованием Pytest.
+
+Проект демонстрирует построение API автотестов, работу с CI/CD и интеграцию с системой управления тестированием Qase TestOps.
+
+---
+
+# Stack
+
+- Python
+- Pytest
+- Requests
+- Git
+- GitLab CI/CD
+- GitLab Runner
+- Docker
+- Qase TestOps
+
+---
+
+# Tested API
+
+В проекте используется публичный REST API: https://jsonplaceholder.typicode.com
 
 
+Покрытые endpoints:
 
-Учебный проект с API-автотестами на Python.
+Users:
 
+- GET /users
+- GET /users/{id}
 
+Posts:
 
-\## Стек
+- GET /posts
+- GET /posts/{id}
+- POST /posts
+- PUT /posts/{id}
+- PATCH /posts/{id}
+- DELETE /posts/{id}
 
+---
 
+# Test Coverage
 
-\* Python
+В проекте реализованы проверки:
 
-\* pytest
+- HTTP status codes
+- JSON structure validation
+- Required fields validation
+- Response data validation
+- Data types validation
+- Nested JSON objects validation
+- Empty values validation
+- CRUD operations
+- Pytest fixtures
+- Parametrize tests
 
-\* requests
+---
 
-\* Docker
-
-\* Git / GitHub
-
-
-
-\## Что тестируется
-
-
-
-В проекте написаны автотесты для публичного API:
-
-
-
-```text
-
-https://jsonplaceholder.typicode.com
-
-```
-
-
-
-Проверяются endpoints:
-
-
-
-\* `/users`
-
-\* `/posts`
-
-
-
-\## Что покрыто тестами
-
-
-
-\* Проверка status code
-
-\* Проверка JSON-ключей
-
-\* Проверка списков объектов
-
-\* Проверка вложенных JSON-структур
-
-\* Проверка значений
-
-\* Проверка типов данных
-
-\* GET / POST / PUT / PATCH / DELETE запросы
-
-\* Fixtures
-
-\* Parametrize
-
-
-
-\## Структура проекта
-
-
-
-```text
-
+# Project Structure
 api-pytest-project/
 
-├── api\_client.py
-
+├── test/
+│ ├── test_users.py
+│ └── test_posts.py
+│
+├── api_client.py
 ├── config.py
-
 ├── conftest.py
-
+│
 ├── requirements.txt
-
 ├── pytest.ini
-
+│
 ├── Dockerfile
-
 ├── .dockerignore
-
 ├── .gitignore
-
-└── test/
-
-&#x20;   ├── test\_posts.py
-
-&#x20;   └── test\_users.py
-
-```
+│
+└── .gitlab-ci.yml
 
 
+---
 
-\## Описание файлов
+# Project Components
 
+## api_client.py
 
+Содержит функции для выполнения API запросов:
 
-\* `api\_client.py` — функции для API-запросов
-
-\* `config.py` — базовый URL и endpoints
-
-\* `conftest.py` — общие pytest fixtures
-
-\* `test/` — тесты
-
-\* `requirements.txt` — зависимости проекта
-
-\* `pytest.ini` — настройки pytest
-
-\* `Dockerfile` — запуск тестов в Docker
-
-\* `.dockerignore` — исключения для Docker-образа
-
-\* `.gitignore` — исключения для Git
+- GET
+- POST
+- PUT
+- PATCH
+- DELETE
 
 
+## config.py
 
-\## Установка зависимостей
+Хранит:
+
+- Base URL
+- API endpoints
 
 
+## conftest.py
+
+Содержит общие pytest fixtures.
+
+
+## tests
+
+Содержит автоматизированные тесты API.
+
+---
+
+# Running Tests Locally
+
+Install dependencies:
 
 ```bash
-
 pip install -r requirements.txt
 
-```
+Run tests: pytest -v
+
+Running Tests with Docker
+
+Build image: docker build -t api-pytest-project .
+Run tests: docker run --rm api-pytest-project
 
 
 
-\## Запуск тестов локально
+CI/CD Pipeline
+
+Автоматический запуск тестов настроен через GitLab CI/CD.
+
+Pipeline flow:
 
 
+git push
+    |
+    ↓
+GitLab Repository
+    |
+    ↓
+GitLab Pipeline
+    |
+    ↓
+GitLab Runner
+    |
+    ↓
+Pytest
+    |
+    ↓
+Qase TestOps Report
 
-```bash
+Pipeline выполняет:
 
-pytest -v
+Создание виртуального окружения
+Установку зависимостей
+Запуск автотестов
+Отправку результатов в Qase TestOps
 
-```
+Test Management
 
+Проект интегрирован с Qase TestOps.
 
+Используется:
 
-\## Запуск тестов в Docker
-
-
-
-Сборка образа:
-
-
-
-```bash
-
-docker build -t api-pytest-project .
-
-```
-
-
-
-Запуск тестов:
-
-
-
-```bash
-
-docker run --rm api-pytest-project
-
-```
-
-
-
-\## Результат
+автоматическая отправка результатов тестов
+привязка автотестов к test cases
+история запусков
+отображение Passed / Failed результатов
 
 
+Author
 
-На текущем этапе в проекте проходит 40 тестов.
+Evgeniy Stepanenko
 
-
-
-```text
-
-40 passed
-
-```
-
-## CI
-
-Tests are automatically run with Jenkins.
-
-
-## Pipeline
-
-Pipeline настроен с SCM polling trigger.
-
-## Верификация 
-
-## VPN
+API Test Automation Project
