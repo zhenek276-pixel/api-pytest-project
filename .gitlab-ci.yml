@@ -1,15 +1,19 @@
 workflow:
   name: "API Tests Pipeline"
 
-smoke_tests:
-  stage: smoke
+stages:
+  - smoke
+  - regression
+
 
 cache:
   paths:
     - .cache/pip
 
-run_tests:
-  stage: test
+
+smoke_tests:
+  stage: smoke
+
   tags:
     - shell
 
@@ -29,10 +33,10 @@ run_tests:
     - export no_proxy=jsonplaceholder.typicode.com
     - pytest -v -m smoke --qase-mode=testops
 
-    
 
-  regression_tests:
+regression_tests:
   stage: regression
+
   tags:
     - shell
 
