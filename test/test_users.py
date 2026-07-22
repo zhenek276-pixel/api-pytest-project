@@ -1,4 +1,8 @@
 import pytest
+pytestmark = [
+    pytest.mark.api,
+    pytest.mark.users
+]
 
 from api_client import get_user, get_all_users
 
@@ -24,6 +28,8 @@ def test_users_404():
     assert response.status_code == 404
 
 @pytest.mark.qase_id(18)
+@pytest.mark.users
+@pytest.mark.api
 @pytest.mark.parametrize(
     "user_id, expected_username",
     [
@@ -135,7 +141,7 @@ def test_get_all_users_email_contains_at():
         email = user["email"]
         assert "@" in email
 
-@pytest.mark.qase_id(27)    
+@pytest.mark.qase_id(27) 
 def test_get_all_users_username_not_empty():
     response = get_all_users()
     data = response.json()
@@ -155,7 +161,7 @@ def test_get_all_users_id_is_integer():
         user_id = user["id"]
         assert isinstance(user_id, int)
 
-@pytest.mark.qase_id(29)        
+@pytest.mark.qase_id(29)    
 def test_get_all_users_company_has_keys():
     response = get_all_users()
     data = response.json()

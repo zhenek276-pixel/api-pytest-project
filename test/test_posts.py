@@ -1,4 +1,8 @@
 import pytest
+pytestmark = [
+    pytest.mark.api,
+    pytest.mark.posts
+]
 
 from api_client import get_post, create_post, update_post, patch_post, delete_post, get_all_posts
 
