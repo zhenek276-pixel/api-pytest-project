@@ -12,12 +12,14 @@ run_tests:
     - python -m pip install --upgrade pip
     - pip install -r requirements.txt
 
-  script:
+ script:
   - source .venv/bin/activate
   - export HTTP_PROXY=http://172.28.64.1:10809
   - export HTTPS_PROXY=http://172.28.64.1:10809
   - export http_proxy=$HTTP_PROXY
   - export https_proxy=$HTTPS_PROXY
+  - export NO_PROXY=jsonplaceholder.typicode.com
+  - export no_proxy=jsonplaceholder.typicode.com
   - pytest -v --qase-mode=testops
 
     
