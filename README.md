@@ -189,7 +189,7 @@ Pipeline выполняет:
 Запуск автотестов
 Отправку результатов в Qase TestOps
 
-Test Management
+Test Management.
 
 Проект интегрирован с Qase TestOps.
 
