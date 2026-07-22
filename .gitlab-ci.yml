@@ -31,7 +31,7 @@ run_tests:
 
     
 
-    regression_tests:
+  regression_tests:
   stage: regression
   tags:
     - shell
